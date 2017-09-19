@@ -1,0 +1,14 @@
+Language:Python 2.7.13
+Library: dnspython 1.15.0
+	 sys
+	 socket
+	 time
+Instructions:
+1: Press "Shift" in the folder and right click mouse, open the CMD in folder path.
+
+2: Input exmaple:
+	python partA.py google.com MX
+
+3: partB did not finish all. Hope to get partial points.
+
+Thank You!

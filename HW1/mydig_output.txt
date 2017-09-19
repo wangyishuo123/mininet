@@ -1,0 +1,53 @@
+Part A:
+----2:
+Input: python partA.py google.com 
+output: 
+	google.com. 300 IN A 216.58.219.206
+
+Input: python partA.py google.com A
+output: 
+	google.com. 300 IN A 216.58.219.206
+
+Input: python partA.py google.com MX
+output: 
+	google.com. 600 IN MX 50 alt4.aspmx.l.google.com.
+	google.com. 600 IN MX 20 alt1.aspmx.l.google.com.
+	google.com. 600 IN MX 10 aspmx.l.google.com.
+	google.com. 600 IN MX 30 alt2.aspmx.l.google.com.
+	google.com. 600 IN MX 40 alt3.aspmx.l.google.com.
+
+Input: python partA.py google.com NS
+output: 
+	google.com. 345600 IN NS ns4.google.com.
+	google.com. 345600 IN NS ns2.google.com.
+	google.com. 345600 IN NS ns1.google.com.
+	google.com. 345600 IN NS ns3.google.com.
+
+----3: 
+corner case: google.co.jp
+When we use "dns.query.udp(query, root_servers)", root_servers must be an Ip address. So we can take the the Ip address from the Additional part, which is the Ip address of the nameservers in Authority part. However, for the corner case, in some step, it will not have the additional part. What I do is using the socket library to get the Ip address by using the nameserver in the Authority part, and use the Ip address.
+
+Input: google.co.jp
+
+Input: python partA.py google.co.jp
+output: 
+	google.co.jp. 300 IN A 216.58.219.195
+
+Input: python partA.py google.co.jp A
+output: 
+	google.co.jp. 300 IN A 216.58.219.195
+
+Input: python partA.py google.co.jp MX
+output: 
+	google.co.jp. 600 IN MX 20 alt1.aspmx.l.google.com.
+	google.co.jp. 600 IN MX 40 alt3.aspmx.l.google.com.
+	google.co.jp. 600 IN MX 10 aspmx.l.google.com.
+	google.co.jp. 600 IN MX 50 alt4.aspmx.l.google.com.
+	google.co.jp. 600 IN MX 30 alt2.aspmx.l.google.com.
+
+Input: python partA.py google.co.jp ns
+output: 
+	google.co.jp. 345600 IN NS ns3.google.com.
+	google.co.jp. 345600 IN NS ns2.google.com.
+	google.co.jp. 345600 IN NS ns1.google.com.
+	google.co.jp. 345600 IN NS ns4.google.com.
